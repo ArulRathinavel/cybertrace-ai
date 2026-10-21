@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CyberTrace AI — Attack Localization</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">CT</div><div><div class="brand-name">CyberTrace <span>AI</span></div><div class="brand-sub">CYBER-PHYSICAL DEFENSE</div></div></div>
+    <div class="nav-label">WORKSPACE</div>
+    <a class="nav active" href="#overview"><span>◈</span> Overview</a>
+    <a class="nav" href="#topology"><span>⌘</span> Attack topology</a>
+    <a class="nav" href="#incidents"><span>◎</span> Incident queue <b id="nav-count">0</b></a>
+    <a class="nav" href="#events"><span>≋</span> Event stream</a>
+    <div class="side-bottom"><div class="side-status"><span class="pulse"></span><div><strong>Simulation online</strong><small>Local demo environment</small></div></div><div class="version">PROTOTYPE v1.0.0</div></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><div class="eyebrow">SUSTAINATHON 2026 / AI-07</div><h1>Attack localization center</h1><p>Trace anomalies to their likely source across a connected EV charging system.</p></div><div class="top-actions"><span class="mode-pill"><span class="pulse"></span> SIMULATION ONLY</span><button class="btn btn-quiet" id="refresh">↻ Refresh</button></div></header>
+    <div class="notice"><span class="notice-icon">ⓘ</span><div><strong>Safe demo environment</strong><span>All events and scores are synthetic. This prototype does not connect to or control real EV equipment.</span></div></div>
+    <section class="stats" id="overview">
+      <div class="stat-card"><div class="stat-top"><span>EVENTS OBSERVED</span><span class="stat-icon">≋</span></div><div class="stat-value" id="stat-events">0</div><div class="stat-foot">Synthetic telemetry records</div></div>
+      <div class="stat-card"><div class="stat-top"><span>INCIDENTS DETECTED</span><span class="stat-icon">◎</span></div><div class="stat-value" id="stat-incidents">0</div><div class="stat-foot">Across simulated scenarios</div></div>
+      <div class="stat-card"><div class="stat-top"><span>HIGH-RISK OPEN</span><span class="stat-icon red">⚠</span></div><div class="stat-value" id="stat-risk">0</div><div class="stat-foot">High and critical incidents</div></div>
+      <div class="stat-card"><div class="stat-top"><span>LOCALIZATION ENGINE</span><span class="stat-icon green">⌁</span></div><div class="stat-value status-value">READY</div><div class="stat-foot"><span class="green-dot"></span> Evidence ranking active</div></div>
+    </section>
+    <section class="grid-main">
+      <div class="panel topology-panel" id="topology"><div class="panel-head"><div><h2>Cyber-physical topology</h2><p>Component status and suspected propagation path</p></div><span class="live-tag"><i></i> LIVE SIM</span></div><div class="topology-wrap"><svg id="topology-svg" viewBox="0 0 720 310" role="img" aria-label="EV charging system topology"></svg></div><div class="legend"><span><i class="legend-dot normal"></i> Normal</span><span><i class="legend-dot path"></i> Suspected path</span><span><i class="legend-dot alert"></i> Suspected origin</span></div><div class="topology-foot" id="topology-foot">Run a simulation to visualize an attack path.</div></div>
+      <div class="panel simulate-panel"><div class="panel-head"><div><h2>Attack simulator</h2><p>Trigger a safe, synthetic scenario</p></div><span class="spark">✳</span></div><div class="scenario-list">
+        <button class="scenario" data-scenario="sensor_spoofing"><span class="scenario-icon orange">⌁</span><span class="scenario-text"><strong>Sensor spoofing</strong><small>Physically inconsistent telemetry</small></span><span class="scenario-arrow">↗</span></button>
+        <button class="scenario" data-scenario="gateway_tampering"><span class="scenario-icon purple">⇄</span><span class="scenario-text"><strong>Communication manipulation</strong><small>Replay / payload mismatch</small></span><span class="scenario-arrow">↗</span></button>
+        <button class="scenario" data-scenario="controller_compromise"><span class="scenario-icon red">⌘</span><span class="scenario-text"><strong>Controller command anomaly</strong><small>Policy-breaking control output</small></span><span class="scenario-arrow">↗</span></button>
+        <button class="scenario" data-scenario="firmware_tampering"><span class="scenario-icon pink">⬡</span><span class="scenario-text"><strong>Firmware integrity anomaly</strong><small>Trusted baseline mismatch</small></span><span class="scenario-arrow">↗</span></button>
+        <button class="scenario" data-scenario="actuator_fault"><span class="scenario-icon blue">◉</span><span class="scenario-text"><strong>Actuator response mismatch</strong><small>Possible fault or manipulation</small></span><span class="scenario-arrow">↗</span></button>
+      </div><div class="sim-actions"><button class="btn btn-primary" id="normal-btn">＋ Add normal telemetry</button><button class="btn btn-quiet" id="reset-btn">Reset demo</button></div><div class="sim-hint">Scenarios are deterministic and designed for repeatable judging demos.</div></div>
+    </section>
+    <section class="grid-bottom">
+      <div class="panel incident-panel" id="incidents"><div class="panel-head"><div><h2>Incident investigations</h2><p>Ranked source hypothesis and evidence</p></div><span class="count-chip" id="incident-chip">0 incidents</span></div><div id="incident-list" class="incident-list"><div class="empty"><div>◎</div><strong>No incidents yet</strong><span>Choose an attack scenario to begin an investigation.</span></div></div></div>
+      <div class="panel events-panel" id="events"><div class="panel-head"><div><h2>Event stream</h2><p>Most recent component telemetry</p></div><span class="live-tag"><i></i> STREAM</span></div><div class="event-table-wrap"><table><thead><tr><th>TIME</th><th>COMPONENT</th><th>EVENT / EVIDENCE</th><th>LEVEL</th></tr></thead><tbody id="event-rows"><tr><td colspan="4" class="table-empty">Waiting for simulated events…</td></tr></tbody></table></div></div>
+    </section>
+    <footer>CyberTrace AI <span>•</span> Educational proof of concept for AI-07 <span>•</span> No real-world control connections</footer>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script src="/static/app.js"></script>
+</body></html>
